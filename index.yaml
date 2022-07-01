@@ -2,6 +2,21 @@ apiVersion: v1
 entries:
   eso-clustersecretstore:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2022-07-01T11:27:44.175262506Z"
+    dependencies:
+    - alias: external-secrets-operator
+      name: external-secrets
+      repository: https://charts.external-secrets.io
+      version: 0.5.7
+    description: Helm chart for eso ClusterSecretStore
+    digest: 6c42c46a9576ceb774cba4b6217e4e1d5b92da1a15dca8f515701c1754412c9b
+    name: eso-clustersecretstore
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/eso-clustersecretstore-0.0.4/eso-clustersecretstore-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2022-07-01T11:19:30.668266267Z"
     dependencies:
