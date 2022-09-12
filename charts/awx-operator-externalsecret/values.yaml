@@ -1,0 +1,6 @@
+name: "postgresql-config"
+key: "randomkey"
+
+awx-operator-helm:
+#Look at defaults from here: https://github.com/ansible/awx-operator
+#When deploying this helm chart prefix the key you want with awx-operator-helm
