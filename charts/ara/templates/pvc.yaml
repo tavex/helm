@@ -1,0 +1,16 @@
+{{- if $.Values.persistentVolumes.enabled }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "common.fullname" $ }}-pvc
+  labels:
+    app: ara
+spec:
+  storageClassName: {{ $.Values.persistentVolumes.storageClassName | default "" | quote }}
+  resources:
+    requests:
+      storage: {{ $.Values.persistentVolumes.size | default "10Gi" }}
+  accessModes:
+    - ReadWriteOnce
+{{- end }}

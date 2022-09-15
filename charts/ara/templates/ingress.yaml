@@ -1,0 +1,28 @@
+{{- if $.Values.ingress.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "common.fullname" $ }}-ingress
+  annotations:
+    {{- toYaml $.Values.ingress.annotations | default dict | nindent 4 }}
+spec:
+  ingressClassName: {{ $.Values.ingress.class }}
+  rules:
+  - host: {{ $.Values.ingress.host }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ include "common.fullname" $ }}-service
+            port:
+              number: 8000
+        path: {{ $.Values.ingress.path }}
+        pathType: Prefix
+{{- if $.Values.ingress.tls.enabled }}
+  tls:
+    - hosts:
+      - {{ default $.Values.ingress.host $.Values.ingress.tls.host }}
+      secret-name: {{ default $.Values.ingress.host $.Values.ingress.tls.host }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,29 @@
+suite: test ingress
+templates:
+  - ingress.yaml
+tests:
+  - it: should contain ingress
+    set:
+      ingress.enabled: true
+    asserts:
+      - isKind:
+          of: Ingress
+
+  - it: should contain ingress
+    set:
+      ingress.enabled: false
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: should contain ingress annotations
+    set:
+      ingress.enabled: true
+      ingress.annotations: { some: thing, foo: bar }
+    assert:
+      - equal:
+          path: metadata.foo
+          value: bar
+      - equal:
+          path: metadata.some
+          value: thing
