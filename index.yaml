@@ -1,5 +1,28 @@
 apiVersion: v1
 entries:
+  ara:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-09-15T08:24:01.426446631Z"
+    description: ARA Records Ansible and makes it easier to understand and troubleshoot.
+    digest: da253bb401a0942bc5bd84109e1c1488808786deefabb9d7832195c9e2249d07
+    home: https://ara.recordsansible.org/
+    icon: https://github.com/ansible-community/ara/raw/master/doc/source/_static/ara-with-icon.png
+    keywords:
+    - awx
+    - ansible
+    - ara
+    maintainers:
+    - email: nold@gnu.one
+      name: Gerrit Pannek
+    name: ara
+    sources:
+    - https://github.com/ansible-community/ara
+    - https://github.com/lib42/charts
+    - https://github.com/tavexit/helm
+    urls:
+    - https://github.com/tavexit/helm/releases/download/ara-0.1.4/ara-0.1.4.tgz
+    version: 0.1.4
   awx-operator-externalsecret:
   - apiVersion: v2
     appVersion: 0.0.2
