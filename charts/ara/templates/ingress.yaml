@@ -23,6 +23,6 @@ spec:
   tls:
     - hosts:
       - {{ default $.Values.ingress.host $.Values.ingress.tls.host }}
-      secret-name: {{ default $.Values.ingress.host $.Values.ingress.tls.host }}
+      secretName: {{ default $.Values.ingress.host $.Values.ingress.tls.host }}
 {{- end }}
 {{- end }}
