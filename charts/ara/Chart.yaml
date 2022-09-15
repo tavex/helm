@@ -15,4 +15,4 @@ sources:
 - https://github.com/ansible-community/ara
 - https://github.com/lib42/charts
 - https://github.com/tavexit/helm
-version: 0.1.4
+version: 0.1.5
