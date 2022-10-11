@@ -3,6 +3,28 @@ entries:
   ara:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2022-10-11T14:56:43.057951962Z"
+    description: ARA Records Ansible and makes it easier to understand and troubleshoot.
+    digest: cc4e5bbcccdb849bb7a5bb24e84119d92f9e56b52b6a4d1686f35a5ab49baca8
+    home: https://ara.recordsansible.org/
+    icon: https://github.com/ansible-community/ara/raw/master/doc/source/_static/ara-with-icon.png
+    keywords:
+    - awx
+    - ansible
+    - ara
+    maintainers:
+    - email: nold@gnu.one
+      name: Gerrit Pannek
+    name: ara
+    sources:
+    - https://github.com/ansible-community/ara
+    - https://github.com/lib42/charts
+    - https://github.com/tavexit/helm
+    urls:
+    - https://github.com/tavexit/helm/releases/download/ara-0.1.6/ara-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-09-15T08:52:51.48508264Z"
     description: ARA Records Ansible and makes it easier to understand and troubleshoot.
     digest: 64ae91cb9d68e5c158ab3df21b7fb469197be4e6640aef0263a713c54a3a18cd
