@@ -52,7 +52,7 @@ spec:
             - health_check
           initialDelaySeconds: 5
           failureThreshold: 3
-          timeoutSeconds: 1
+          timeoutSeconds: 10
           periodSeconds: 10
         readinessProbe:
           exec:
@@ -61,7 +61,7 @@ spec:
             - health_check
           initialDelaySeconds: 5
           failureThreshold: 3
-          timeoutSeconds: 1
+          timeoutSeconds: 10
           periodSeconds: 10
         startupProbe:
           exec:
@@ -70,7 +70,7 @@ spec:
             - health_check
           initialDelaySeconds: 5
           failureThreshold: 30
-          timeoutSeconds: 1
+          timeoutSeconds: 10
       volumes:
       - name: ara
         {{- if $.Values.persistentVolumes.enabled }}
