@@ -113,6 +113,21 @@ entries:
     version: 0.1.4
   awx-operator-externalsecret:
   - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2023-03-30T12:50:52.681837236Z"
+    dependencies:
+    - alias: awx-operator-helm
+      name: awx-operator
+      repository: https://ansible.github.io/awx-operator/
+      version: 1.4.0
+    description: Helm chart for awx-operator externalsecret support
+    digest: 336548f7316c610cb1830b62b5e46a5bfc9a2fd4de2b86ec376065e81790f09f
+    name: awx-operator-externalsecret
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/awx-operator-externalsecret-0.0.6/awx-operator-externalsecret-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
     appVersion: 0.0.5
     created: "2022-12-30T10:50:43.572854989Z"
     dependencies:
