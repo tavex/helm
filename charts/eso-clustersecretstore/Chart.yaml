@@ -2,11 +2,11 @@ apiVersion: v2
 name: eso-clustersecretstore
 description: Helm chart for eso ClusterSecretStore
 type: application
-version: 0.0.8
-appVersion: 0.0.8
+version: 0.0.9
+appVersion: 0.0.9
 
 dependencies:
 - name: external-secrets
   alias: external-secrets-operator
-  version: 0.7.0
+  version: 0.8.1
   repository: https://charts.external-secrets.io
