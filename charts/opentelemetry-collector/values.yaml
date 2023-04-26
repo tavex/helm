@@ -1,4 +1,4 @@
-## Create externalsecret for opentelemetry connector
+## Create externalsecret for opentelemetry collector to Jaeger
 externalsecret:
   # Secret name
   name: ""
