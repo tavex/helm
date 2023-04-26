@@ -340,6 +340,22 @@ entries:
     version: 0.0.1
   opentelemetry-collector:
   - apiVersion: v2
+    created: "2023-04-26T09:48:24.870093369Z"
+    dependencies:
+    - alias: opentelemetry-collector
+      name: opentelemetry-collector
+      repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+      version: 0.54.1
+    description: Wrapper chart for OpenTelemetry Collector Helm chart for Kubernetes
+    digest: f24c2d88a8d7d8e21987779634ba0721dd12138c365347c4f1173d0afac61ae9
+    home: https://opentelemetry.io/
+    icon: https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png
+    name: opentelemetry-collector
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/opentelemetry-collector-0.1.2/opentelemetry-collector-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2023-04-26T09:30:08.860102617Z"
     dependencies:
     - alias: opentelemetry-collector
