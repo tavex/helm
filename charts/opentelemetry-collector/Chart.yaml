@@ -1,0 +1,14 @@
+---
+apiVersion: v2
+name: opentelemetry-collector
+version: 0.1.0
+description: Wrapper chart for OpenTelemetry Collector Helm chart for Kubernetes
+type: application
+home: https://opentelemetry.io/
+icon: https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png
+
+dependencies:
+  - name: opentelemetry-collector
+    alias: opentelemetry-collector
+    version: 0.54.1
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
