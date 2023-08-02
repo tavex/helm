@@ -113,6 +113,21 @@ entries:
     version: 0.1.4
   awx-operator-externalsecret:
   - apiVersion: v2
+    appVersion: 0.0.8
+    created: "2023-08-02T09:47:39.385867111Z"
+    dependencies:
+    - alias: awx-operator-helm
+      name: awx-operator
+      repository: https://ansible.github.io/awx-operator/
+      version: 2.5.0
+    description: Helm chart for awx-operator externalsecret support
+    digest: 5b170000f72e8e6d168e72a75da198c00cfe6a3728a24f7331f6725d1332f4f4
+    name: awx-operator-externalsecret
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/awx-operator-externalsecret-0.0.8/awx-operator-externalsecret-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
     appVersion: 0.0.6
     created: "2023-03-30T12:50:52.681837236Z"
     dependencies:
@@ -387,4 +402,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/opentelemetry-collector-0.1.0/opentelemetry-collector-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-30T06:37:04.892038272Z"
+generated: "2023-08-02T09:47:39.386443425Z"
