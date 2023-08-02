@@ -2,8 +2,8 @@ apiVersion: v2
 name: awx-operator-externalsecret
 description: Helm chart for awx-operator externalsecret support
 type: application
-version: 0.0.7
-appVersion: 0.0.7
+version: 0.0.8
+appVersion: 0.0.8
 
 dependencies:
 - name: awx-operator
