@@ -417,4 +417,25 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/opentelemetry-collector-0.1.0/opentelemetry-collector-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-04T10:40:52.373226639Z"
+  rancher:
+  - apiVersion: v2
+    appVersion: v2.7.5
+    created: "2023-08-10T13:19:00.74203056Z"
+    description: Install Rancher Server to manage Kubernetes clusters across providers.
+    digest: 161065e95c26184d8dd2f4d8eea490b68a069d3029760376446f2ecb3929f9af
+    home: https://rancher.com
+    icon: https://github.com/rancher/ui/blob/master/public/assets/images/logos/welcome-cow.svg
+    keywords:
+    - rancher
+    kubeVersion: < 1.30.0-0
+    maintainers:
+    - email: charts@rancher.com
+      name: Rancher Labs
+    name: rancher
+    sources:
+    - https://github.com/rancher/rancher
+    - https://github.com/rancher/server-chart
+    urls:
+    - https://github.com/tavexit/helm/releases/download/rancher-2.7.5/rancher-2.7.5.tgz
+    version: 2.7.5
+generated: "2023-08-10T13:19:00.74207356Z"
