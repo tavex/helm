@@ -368,6 +368,54 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/eso-clustersecretstore-0.0.1/eso-clustersecretstore-0.0.1.tgz
     version: 0.0.1
+  jaeger:
+  - apiVersion: v2
+    appVersion: 1.45.0
+    created: "2023-08-14T09:22:07.042449894Z"
+    dependencies:
+    - condition: provisionDataStore.cassandra
+      name: cassandra
+      repository: https://charts.helm.sh/incubator
+      version: 0.15.3
+    - condition: provisionDataStore.elasticsearch
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: ^7.11.1
+    - condition: provisionDataStore.kafka
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: ^19.1.5
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 1.16.0
+    description: A Jaeger Helm chart for Kubernetes
+    digest: d6c5fff93dbd7f811f9e82c52b189e233bfc8d100b9220f1f2fc6345eb2a8551
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    kubeVersion: '>= 1.21-0'
+    maintainers:
+    - email: david.vonthenen@dell.com
+      name: dvonthenen
+    - email: ankit.mehta@appian.com
+      name: mehta-ankit
+    - email: michael.lorant@fairfaxmedia.com.au
+      name: mikelorant
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: me@pavelnikolov.net
+      name: pavelnikolov
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/jaeger-0.71.11/jaeger-0.71.11.tgz
+    version: 0.71.11
   opentelemetry-collector:
   - apiVersion: v2
     created: "2023-04-26T09:48:24.870093369Z"
@@ -438,4 +486,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/rancher-2.7.5/rancher-2.7.5.tgz
     version: 2.7.5
-generated: "2023-08-10T13:19:00.74207356Z"
+generated: "2023-08-14T09:22:07.042494295Z"
