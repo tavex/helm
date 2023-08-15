@@ -1,31 +1,32 @@
-vault:
-  vaults:
-    - name: "vault-backend"
-      vault: 
-        server: "https://vault.cloud.com:8200"
-        path: "secret"
-        version: "v1"
+name: "vault-backend"
+namespace: "external-secrets"
+vault: 
+  server: "https://vault.cloud.com:8200"
+  path: "secret"
+  version: "v1"
   auth:
     jwt:
       path: "auth-path"
       role: "rolename"
       sa: "vault-external-secrets-operator"
-      sanamespace: "external-secrets"
       expiration: 600
 
 # Alternate way of describing clustersecretstore
-# name: "vault-backend"
-# namespace: "external-secrets"
-# vault: 
-#   server: "https://vault.cloud.com:8200"
-#   path: "secret"
-#   version: "v1"
+# vault:
+#   vaults:
+#     - name: "vault-backend"
+#       vault: 
+#         server: "https://vault.cloud.com:8200"
+#         path: "secret"
+#         version: "v1"
 #   auth:
 #     jwt:
 #       path: "auth-path"
 #       role: "rolename"
 #       sa: "vault-external-secrets-operator"
+#       sanamespace: "external-secrets"
 #       expiration: 600
+
 
 external-secrets-operator:
 # defaults from original helm chart https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets?modal=values
