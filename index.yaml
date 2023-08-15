@@ -219,6 +219,21 @@ entries:
     version: 0.0.1
   eso-clustersecretstore:
   - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-08-15T14:33:39.596365598Z"
+    dependencies:
+    - alias: external-secrets-operator
+      name: external-secrets
+      repository: https://charts.external-secrets.io
+      version: 0.9.3
+    description: Helm chart for eso ClusterSecretStore
+    digest: a95b9367c211e99e9376dd2504d2bf5c6969a57c21a27ba78cc18834315abcb7
+    name: eso-clustersecretstore
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/eso-clustersecretstore-0.1.0/eso-clustersecretstore-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: 0.0.15
     created: "2023-08-15T14:26:14.8127807Z"
     dependencies:
@@ -708,4 +723,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/rancher-2.7.5/rancher-2.7.5.tgz
     version: 2.7.5
-generated: "2023-08-15T14:26:14.812984498Z"
+generated: "2023-08-15T14:33:39.596508397Z"
