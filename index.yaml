@@ -113,6 +113,21 @@ entries:
     version: 0.1.4
   awx-operator-externalsecret:
   - apiVersion: v2
+    appVersion: 0.0.10
+    created: "2023-08-18T09:12:32.774802086Z"
+    dependencies:
+    - alias: awx-operator-helm
+      name: awx-operator
+      repository: https://ansible.github.io/awx-operator/
+      version: 2.5.1
+    description: Helm chart for awx-operator externalsecret support
+    digest: 8f06f11c74bd046015f3d2f3e2b510a8dc4ff79dc8f34c6229c249247a8a14d3
+    name: awx-operator-externalsecret
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/awx-operator-externalsecret-0.0.10/awx-operator-externalsecret-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
     appVersion: 0.0.8
     created: "2023-08-02T09:47:39.385867111Z"
     dependencies:
@@ -738,4 +753,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/rancher-2.7.5/rancher-2.7.5.tgz
     version: 2.7.5
-generated: "2023-08-15T14:58:38.016169839Z"
+generated: "2023-08-18T09:12:32.77506179Z"
