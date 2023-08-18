@@ -2,11 +2,11 @@ apiVersion: v2
 name: awx-operator-externalsecret
 description: Helm chart for awx-operator externalsecret support
 type: application
-version: 0.0.8
-appVersion: 0.0.8
+version: 0.0.9
+appVersion: 0.0.9
 
 dependencies:
 - name: awx-operator
   alias: awx-operator-helm
-  version: 2.5.0
+  version: 2.5.1
   repository: https://ansible.github.io/awx-operator/
