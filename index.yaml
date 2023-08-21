@@ -755,6 +755,28 @@ entries:
     version: 2.7.5
   weblate:
   - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2023-08-21T13:33:50.73447529Z"
+    dependencies:
+    - name: weblate
+      repository: https://helm.weblate.org
+      version: 0.4.31
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.8.0
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.14.4
+    description: Helm chart for weblate externalsecret support
+    digest: d2289579838df979bb287c27dff60eca04d60f9950e8d1ffa18ce67d9353c307
+    name: weblate
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/weblate-0.0.2/weblate-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-08-21T13:23:56.089876434Z"
     dependencies:
@@ -768,4 +790,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
     version: 0.0.1
-generated: "2023-08-21T13:23:56.089974536Z"
+generated: "2023-08-21T13:33:50.73455369Z"
