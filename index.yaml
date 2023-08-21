@@ -755,6 +755,20 @@ entries:
     version: 2.7.5
   weblate:
   - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2023-08-21T13:43:11.161125297Z"
+    dependencies:
+    - name: weblate
+      repository: https://helm.weblate.org
+      version: 0.4.31
+    description: Helm chart for weblate externalsecret support
+    digest: 891dbbbddbfabd6ceafa9f1d6b168bb78b4a205efc62d9595f7885e3a9fd18bf
+    name: weblate
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/weblate-0.0.3/weblate-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     appVersion: 0.0.2
     created: "2023-08-21T13:33:50.73447529Z"
     dependencies:
@@ -790,4 +804,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
     version: 0.0.1
-generated: "2023-08-21T13:33:50.73455369Z"
+generated: "2023-08-21T13:43:11.161197197Z"
