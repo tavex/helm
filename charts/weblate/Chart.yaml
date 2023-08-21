@@ -2,10 +2,18 @@ apiVersion: v2
 name: weblate
 description: Helm chart for weblate externalsecret support
 type: application
-version: 0.0.1
-appVersion: 0.0.1
+version: 0.0.2
+appVersion: 0.0.2
 
 dependencies:
 - name: weblate
   version: 0.4.31
   repository: https://helm.weblate.org
+- name: postgresql
+  version: 12.8.0
+  repository: https://charts.bitnami.com/bitnami
+  condition: postgresql.enabled
+- name: redis
+  version: 17.14.4
+  repository: https://charts.bitnami.com/bitnami
+  condition: redis.enabled
