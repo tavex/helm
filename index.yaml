@@ -753,4 +753,19 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/rancher-2.7.5/rancher-2.7.5.tgz
     version: 2.7.5
-generated: "2023-08-18T09:12:32.77506179Z"
+  weblate:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-08-21T13:23:56.089876434Z"
+    dependencies:
+    - name: weblate
+      repository: https://helm.weblate.org
+      version: 0.4.31
+    description: Helm chart for weblate externalsecret support
+    digest: babc4e8a410b20f48ed6cecc07034bfee53f217374f144c736eace99cb1d7256
+    name: weblate
+    type: application
+    urls:
+    - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-08-21T13:23:56.089974536Z"
