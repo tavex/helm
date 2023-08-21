@@ -1,0 +1,11 @@
+apiVersion: v2
+name: weblate
+description: Helm chart for weblate externalsecret support
+type: application
+version: 0.0.1
+appVersion: 0.0.1
+
+dependencies:
+- name: weblate
+  version: 0.4.31
+  repository: https://helm.weblate.org/weblate/
