@@ -113,6 +113,21 @@ entries:
     version: 0.1.4
   awx-operator-externalsecret:
   - apiVersion: v2
+    appVersion: 0.0.11
+    created: "2023-11-27T10:57:34.497197922Z"
+    dependencies:
+    - alias: awx-operator-helm
+      name: awx-operator
+      repository: https://ansible.github.io/awx-operator/
+      version: 2.8.0
+    description: Helm chart for awx-operator externalsecret support
+    digest: ab4e3b85a641ee3b567461f3721b69031ee53ad68ac907d91da3f2446cf4c9c9
+    name: awx-operator-externalsecret
+    type: application
+    urls:
+    - https://github.com/tavex/helm/releases/download/awx-operator-externalsecret-0.0.11/awx-operator-externalsecret-0.0.11.tgz
+    version: 0.0.11
+  - apiVersion: v2
     appVersion: 0.0.10
     created: "2023-08-18T09:12:32.774802086Z"
     dependencies:
@@ -804,4 +819,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
     version: 0.0.1
-generated: "2023-08-21T13:43:11.161197197Z"
+generated: "2023-11-27T10:57:34.497305692Z"
