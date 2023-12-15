@@ -59,6 +59,7 @@ helm.sh/chart: {{ include "opentelemetry-collector.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{ include "opentelemetry-collector.additionalLabels" . }}
 {{- end }}
 
 {{/*
@@ -97,13 +98,19 @@ Create the name of the clusterRoleBinding to use
 
 {{- define "opentelemetry-collector.podAnnotations" -}}
 {{- if .Values.podAnnotations }}
-{{- .Values.podAnnotations | toYaml }}
+{{- tpl (.Values.podAnnotations | toYaml) . }}
 {{- end }}
 {{- end }}
 
 {{- define "opentelemetry-collector.podLabels" -}}
 {{- if .Values.podLabels }}
-{{- .Values.podLabels | toYaml }}
+{{- tpl (.Values.podLabels | toYaml) . }}
+{{- end }}
+{{- end }}
+
+{{- define "opentelemetry-collector.additionalLabels" -}}
+{{- if .Values.additionalLabels }}
+{{- tpl (.Values.additionalLabels | toYaml) . }}
 {{- end }}
 {{- end }}
 
@@ -118,14 +125,74 @@ Return the appropriate apiVersion for podDisruptionBudget.
   {{- end -}}
 {{- end -}}
 
+{{/*
+Compute Service creation on mode
+*/}}
+{{- define "opentelemetry-collector.serviceEnabled" }}
+  {{- $serviceEnabled := true }}
+  {{- if not (eq (toString .Values.service.enabled) "<nil>") }}
+    {{- $serviceEnabled = .Values.service.enabled -}}
+  {{- end }}
+  {{- if and (eq .Values.mode "daemonset") (not .Values.service.enabled) }}
+    {{- $serviceEnabled = false -}}
+  {{- end }}
+
+  {{- print $serviceEnabled }}
+{{- end -}}
+
 
 {{/*
-Check if logs collection is enabled via deprecated "containerLogs" or "preset.logsCollection"
+Compute InternalTrafficPolicy on Service creation
 */}}
-{{- define "opentelemetry-collector.logsCollectionEnabled" }}
-  {{- if eq (toString .Values.containerLogs) "<nil>" }}
-    {{- print .Values.presets.logsCollection.enabled }}
+{{- define "opentelemetry-collector.serviceInternalTrafficPolicy" }}
+  {{- if and (eq .Values.mode "daemonset") (eq .Values.service.enabled true) }}
+    {{- print (.Values.service.internalTrafficPolicy | default "Local") -}}
   {{- else }}
-    {{- print .Values.containerLogs.enabled }}
+    {{- print (.Values.service.internalTrafficPolicy | default "Cluster") -}}
   {{- end }}
+{{- end -}}
+
+{{/*
+Allow the release namespace to be overridden
+*/}}
+{{- define "opentelemetry-collector.namespace" -}}
+  {{- if .Values.namespaceOverride -}}
+    {{- .Values.namespaceOverride -}}
+  {{- else -}}
+    {{- .Release.Namespace -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*
+Convert memory value to numeric value in MiB to be used by otel memory_limiter processor.
+*/}}
+{{- define "opentelemetry-collector.convertMemToMib" -}}
+{{- $mem := lower . -}}
+{{- if hasSuffix "e" $mem -}}
+{{- trimSuffix "e" $mem | atoi | mul 1000 | mul 1000 | mul 1000 | mul 1000 -}}
+{{- else if hasSuffix "ei" $mem -}}
+{{- trimSuffix "ei" $mem | atoi | mul 1024 | mul 1024 | mul 1024 | mul 1024 -}}
+{{- else if hasSuffix "p" $mem -}}
+{{- trimSuffix "p" $mem | atoi | mul 1000 | mul 1000 | mul 1000 -}}
+{{- else if hasSuffix "pi" $mem -}}
+{{- trimSuffix "pi" $mem | atoi | mul 1024 | mul 1024 | mul 1024 -}}
+{{- else if hasSuffix "t" $mem -}}
+{{- trimSuffix "t" $mem | atoi | mul 1000 | mul 1000 -}}
+{{- else if hasSuffix "ti" $mem -}}
+{{- trimSuffix "ti" $mem | atoi | mul 1024 | mul 1024 -}}
+{{- else if hasSuffix "g" $mem -}}
+{{- trimSuffix "g" $mem | atoi | mul 1000 -}}
+{{- else if hasSuffix "gi" $mem -}}
+{{- trimSuffix "gi" $mem | atoi | mul 1024 -}}
+{{- else if hasSuffix "m" $mem -}}
+{{- div (trimSuffix "m" $mem | atoi | mul 1000) 1024 -}}
+{{- else if hasSuffix "mi" $mem -}}
+{{- trimSuffix "mi" $mem | atoi -}}
+{{- else if hasSuffix "k" $mem -}}
+{{- div (trimSuffix "k" $mem | atoi) 1000 -}}
+{{- else if hasSuffix "ki" $mem -}}
+{{- div (trimSuffix "ki" $mem | atoi) 1024 -}}
+{{- else -}}
+{{- div (div ($mem | atoi) 1024) 1024 -}}
+{{- end -}}
 {{- end -}}
