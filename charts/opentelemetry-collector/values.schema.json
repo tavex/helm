@@ -35,6 +35,10 @@
       "type": "string",
       "enum": ["daemonset", "deployment", "statefulset", ""]
     },
+    "namespaceOverride": {
+      "type": "string",
+      "description": "Name of the namespace to deploy the resources into."
+    },
     "presets": {
       "type": "object",
       "additionalProperties": false,
@@ -54,6 +58,10 @@
             "storeCheckpoints": {
               "description": "Specifies whether logs checkpoints should be stored in /var/lib/otelcol/ host directory.",
               "type": "boolean"
+            },
+            "maxRecombineLogSize": {
+              "description": "Specifies the max recombine log size.",
+              "type": "integer"
             }
           }
         },
@@ -83,6 +91,14 @@
           "properties": {
             "enabled": {
               "description": "Specifies whether the collector should add Kubernetes metdata to resource attributes.",
+              "type": "boolean"
+            },
+            "extractAllPodLabels": {
+              "description": "Specifies whether the k8sattributes processor should extract all pod labels.",
+              "type": "boolean"
+            },
+            "extractAllPodAnnotations": {
+              "description": "Specifies whether the k8sattributes processor should extract all pod annotations.",
               "type": "boolean"
             }
           }
@@ -273,25 +289,7 @@
         "type": "object"
       }
     },
-    "extraConfigMapMounts": {
-      "type": "array",
-      "items": {
-        "type": "object"
-      }
-    },
-    "extraHostPathMounts": {
-      "type": "array",
-      "items": {
-        "type": "object"
-      }
-    },
-    "secretMounts": {
-      "type": "array",
-      "items": {
-        "type": "object"
-      }
-    },
-    "extraObjects": {
+    "extraEnvsFrom": {
       "type": "array",
       "items": {
         "type": "object"
@@ -341,15 +339,6 @@
           "required": ["enabled"]
         }
       }
-    },
-    "containerLogs": {
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "type": "boolean"
-        }
-      },
-      "required": ["enabled"]
     },
     "resources": {
       "type": "object",
@@ -481,10 +470,79 @@
         }
       }
     },
+    "livenessProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "initialDelaySeconds": {
+          "type": "integer"
+        },
+        "periodSeconds": {
+          "type": "integer"
+        },
+        "timeoutSeconds": {
+          "type": "integer"
+        },
+        "failureThreshold": {
+          "type": "integer"
+        },
+        "terminationGracePeriodSeconds": {
+          "type": "integer"
+        },
+        "httpGet": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "port": {
+              "type": "integer"
+            },
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "readinessProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "initialDelaySeconds": {
+          "type": "integer"
+        },
+        "periodSeconds": {
+          "type": "integer"
+        },
+        "timeoutSeconds": {
+          "type": "integer"
+        },
+        "successThreshold": {
+          "type": "integer"
+        },
+        "failureThreshold": {
+          "type": "integer"
+        },
+        "httpGet": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "port": {
+              "type": "integer"
+            },
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "podAnnotations": {
       "type": "object"
     },
     "podLabels": {
+      "type": "object"
+    },
+    "additionalLabels": {
       "type": "object"
     },
     "hostNetwork": {
@@ -493,6 +551,9 @@
     "dnsPolicy": {
       "type": "string",
       "enum": ["ClusterFirst", "ClusterFirstWithHostNet", "Default", "None", ""]
+    },
+    "dnsConfig": {
+      "type": "object"
     },
     "replicaCount": {
       "type": "integer"
@@ -507,6 +568,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
         "type": {
           "type": "string",
           "enum": ["ClusterIP", "NodePort", "LoadBalancer", "ExternalName"]
@@ -525,6 +589,14 @@
         },
         "annotations": {
           "type": "object"
+        },
+        "internalTrafficPolicy": {
+          "type": "string",
+          "enum": ["Cluster", "Local", ""]
+        },
+        "externalTrafficPolicy": {
+          "type": "string",
+          "enum": ["Cluster", "Local", ""]
         }
       }
     },
@@ -726,6 +798,9 @@
         "maxReplicas": {
           "type": "integer"
         },
+        "behavior": {
+          "type": "object"
+        },
         "targetCPUUtilizationPercentage": {
           "type": "integer"
         }
@@ -827,6 +902,9 @@
           }
         }
       }
+    },
+    "useGOMEMLIMIT": {
+      "type": "boolean"
     }
   },
   "required": ["mode"]
