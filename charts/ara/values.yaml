@@ -1,6 +1,7 @@
 # Values for lib42/ara Helm Chart
 image: docker.io/recordsansible/ara-api:latest
 pullPolicy: IfNotPresent
+imagePullSecrets: []
 
 # You can configure ARA using Environment Variables
 # See: https://ara.readthedocs.io/en/latest/api-configuration.html
