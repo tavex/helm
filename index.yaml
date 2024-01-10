@@ -3,6 +3,28 @@ entries:
   ara:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2024-01-10T10:58:33.052534458Z"
+    description: ARA Records Ansible and makes it easier to understand and troubleshoot.
+    digest: 6476adf29dcd95ba9074658e386d54d23d722e263e733ee579ea3d1157bd6d3a
+    home: https://ara.recordsansible.org/
+    icon: https://github.com/ansible-community/ara/raw/master/doc/source/_static/ara-with-icon.png
+    keywords:
+    - awx
+    - ansible
+    - ara
+    maintainers:
+    - email: nold@gnu.one
+      name: Gerrit Pannek
+    name: ara
+    sources:
+    - https://github.com/ansible-community/ara
+    - https://github.com/lib42/charts
+    - https://github.com/tavexit/helm
+    urls:
+    - https://github.com/tavex/helm/releases/download/ara-0.1.10/ara-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2024-01-10T08:01:50.99826971Z"
     description: ARA Records Ansible and makes it easier to understand and troubleshoot.
     digest: eb46967089ac5496e1b86f7332c895a9c27a22b37293fbfa9c166ac87fa8e7d0
@@ -971,4 +993,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
     version: 0.0.1
-generated: "2024-01-10T08:01:50.998408108Z"
+generated: "2024-01-10T10:58:33.052639794Z"
