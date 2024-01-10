@@ -6,10 +6,6 @@ metadata:
   labels:
     app: ara
 spec:
-  {{- with .Values.imagePullSecrets }}
-  imagePullSecrets:
-    {{- toYaml . | nindent 8 }}
-  {{- end }}
   replicas: {{ $.Values.replicas }}
   selector:
     matchLabels:
@@ -19,6 +15,10 @@ spec:
       labels:
         app: ara
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
