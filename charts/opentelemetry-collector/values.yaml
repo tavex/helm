@@ -94,7 +94,8 @@ config:
     # The health_check extension is mandatory for this chart.
     # Without the health_check extension the collector will fail the readiness and liveliness probes.
     # The health_check extension can be modified, but should never be removed.
-    health_check: {}
+    health_check:
+      endpoint: ${env:MY_POD_IP}:13133
     memory_ballast: {}
   processors:
     batch: {}
@@ -330,6 +331,13 @@ additionalLabels: {}
 # Host networking requested for this pod. Use the host's network namespace.
 hostNetwork: false
 
+# Adding entries to Pod /etc/hosts with HostAliases
+# https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/
+hostAliases: []
+  # - ip: "1.2.3.4"
+  #   hostnames:
+  #     - "my.host.com"
+
 # Pod DNS policy ClusterFirst, ClusterFirstWithHostNet, None, Default, None
 dnsPolicy: ""
 
@@ -513,7 +521,7 @@ podDisruptionBudget:
 #   minAvailable: 2
 #   maxUnavailable: 1
 
-# autoscaling is used only if deployment enabled
+# autoscaling is used only if mode is "deployment" or "statefulset"
 autoscaling:
   enabled: false
   minReplicas: 1
