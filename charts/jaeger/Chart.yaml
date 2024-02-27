@@ -40,4 +40,4 @@ name: jaeger
 sources:
 - https://hub.docker.com/u/jaegertracing/
 type: application
-version: 1.0.2
+version: 1.0.3
