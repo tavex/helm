@@ -1,4 +1,0 @@
-{{- range .Values.extraWorkers }}
----
-{{ include "common.tplvalues.render" (dict "value" . "context" $) }}
-{{- end }}
