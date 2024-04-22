@@ -1,4 +1,4 @@
-{{- if or .Values.tls.enabled .Values.ingress.tls -}}
+{{- if .Values.tls.enabled -}}
 {{- if not (eq (include "common.capabilities.certManager.apiVersion" .) "false") -}}
 apiVersion: {{ include "common.capabilities.certManager.apiVersion" . }}
 kind: Certificate
