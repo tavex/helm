@@ -842,6 +842,57 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: v3.7.3
+    created: "2024-04-22T09:12:06.871242275Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 13.x.x
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 18.x.x
+    - alias: bitnami-common
+      name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    - alias: startechnica-common
+      name: st-common
+      repository: https://startechnica.github.io/apps
+      version: 0.x.x
+    description: IP address management (IPAM) and data center infrastructure management
+      (DCIM) tool
+    digest: 0e2e17207fb12a83c5c9a51963c381598738017c350fa33e18c6dd23f27d37d2
+    home: https://github.com/startechnica/apps/tree/main/charts/netbox
+    icon: https://raw.githubusercontent.com/netbox-community/netbox/develop/docs/netbox_logo.png
+    keywords:
+    - ipam
+    - netbox
+    kubeVersion: '>=1.25.0'
+    maintainers:
+    - email: firmansyah@nainggolan.id
+      name: Firmansyah Nainggolan
+      url: https://firmansyah.nainggolan.id
+    name: netbox
+    type: application
+    urls:
+    - https://github.com/tavex/helm/releases/download/netbox-5.0.8/netbox-5.0.8.tgz
+    version: 5.0.8
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: fixed
+          description: Housekeeping nodeSelector indent
+          links:
+            - name: GitHub Issue
+              url: https://github.com/startechnica/apps/issues/59
+      images: |
+        - name: netbox
+          image: docker.io/netboxcommunity/netbox:v3.7.3-2.8.0
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: v3.7.3
     created: "2024-04-22T09:04:54.478881153Z"
     dependencies:
     - condition: postgresql.enabled
@@ -1213,4 +1264,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
     version: 0.0.1
-generated: "2024-04-22T09:04:54.478979747Z"
+generated: "2024-04-22T09:12:06.871367558Z"
