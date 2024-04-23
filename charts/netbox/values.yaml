@@ -2725,13 +2725,5 @@ gateway:
   ## @param gateway.extraRoute Array of extra Kubernetes Gateway API Route to deploy with the release
   ##
   extraRoute: []
-
-externalsecret:
-  azure:
-    name: netbox-azure-secrets
-    location: tools/netbox/azure
-  s3:
-    name: netbox-s3-secrets
-    location: tools/netbox/s3
 # Array with extra yaml objects to install alongside the chart. Values are evaluated as a template.
 extraObjects: []
