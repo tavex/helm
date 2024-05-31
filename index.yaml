@@ -1435,6 +1435,26 @@ entries:
     version: 0.1.0
   rancher:
   - apiVersion: v2
+    appVersion: v2.8.4
+    created: "2024-05-31T09:03:42.182983459Z"
+    description: Install Rancher Server to manage Kubernetes clusters across providers.
+    digest: 2c879292aab21675986f464e016e44b4de3881d8d1a58c5430fed1a5271789f2
+    home: https://rancher.com
+    icon: https://github.com/rancher/ui/blob/master/public/assets/images/logos/welcome-cow.svg
+    keywords:
+    - rancher
+    kubeVersion: < 1.35.0-0
+    maintainers:
+    - email: charts@rancher.com
+      name: Rancher Labs
+    name: rancher
+    sources:
+    - https://github.com/rancher/rancher
+    - https://github.com/rancher/server-chart
+    urls:
+    - https://github.com/tavex/helm/releases/download/rancher-2.8.4-v2/rancher-2.8.4-v2.tgz
+    version: 2.8.4-v2
+  - apiVersion: v2
     appVersion: v.2.8.4
     created: "2024-05-31T08:59:16.793414346Z"
     description: Install Rancher Server to manage Kubernetes clusters across providers.
@@ -1539,4 +1559,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-31T08:59:16.793585535Z"
+generated: "2024-05-31T09:03:42.183156622Z"
