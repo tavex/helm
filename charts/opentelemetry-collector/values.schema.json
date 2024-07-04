@@ -302,6 +302,12 @@
         "type": "object"
       }
     },
+    "extraObjects": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
     "extraVolumes": {
       "type": "array",
       "items": {
