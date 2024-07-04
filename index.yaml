@@ -1263,6 +1263,24 @@ entries:
     version: 5.0.0
   opentelemetry-collector:
   - apiVersion: v2
+    appVersion: 0.104.0
+    created: "2024-07-04T11:15:50.003214801Z"
+    description: OpenTelemetry Collector Helm chart for Kubernetes
+    digest: d2e29f2f412e48957635184db9d82cbd437b8abab3cf798ca5cbf9ac940013d6
+    home: https://opentelemetry.io/
+    icon: https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png
+    maintainers:
+    - name: dmitryax
+    - name: TylerHelmuth
+    name: opentelemetry-collector
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-collector
+    - https://github.com/open-telemetry/opentelemetry-collector-contrib
+    type: application
+    urls:
+    - https://github.com/tavex/helm/releases/download/opentelemetry-collector-0.97.1/opentelemetry-collector-0.97.1.tgz
+    version: 0.97.1
+  - apiVersion: v2
     appVersion: 0.95.0
     created: "2024-02-27T11:25:44.693965692Z"
     description: OpenTelemetry Collector Helm chart for Kubernetes
@@ -1608,4 +1626,4 @@ entries:
     urls:
     - https://github.com/tavexit/helm/releases/download/weblate-0.0.1/weblate-0.0.1.tgz
     version: 0.0.1
-generated: "2024-07-04T11:00:42.046122952Z"
+generated: "2024-07-04T11:15:50.003611312Z"
