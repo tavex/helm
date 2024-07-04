@@ -302,7 +302,7 @@ provisionDataStore:
 allInOne:
   enabled: true
 storage:
-  type: none
+  type: memory
 agent:
   enabled: false
 collector:
@@ -351,7 +351,11 @@ query:
   enabled: true
   oAuthSidecar:
     enabled: true
-    image: quay.io/oauth2-proxy/oauth2-proxy:v7.3.0
+    resources: {}
+    image:
+      registry: quay.io
+      repository: oauth2-proxy/oauth2-proxy
+      tag: v7.6.0
     pullPolicy: IfNotPresent
     containerPort: 4180
     args:
@@ -395,7 +399,7 @@ extraObjects:
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
-      name: {{ .Release.Name }}-someRoleBinding
+      name: "{{ .Release.Name }}-someRoleBinding"
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: Role
@@ -432,3 +436,17 @@ hotrod:
     - name: OTEL_EXPORTER_OTLP_ENDPOINT
       value: http://my-otel-collector-opentelemetry-collector:4318
 ```
+
+## Updating to Kafka to Kraft Mode
+
+In the Kafka Helm Chart version 24.0.0 major refactors were done to support Kraft mode. More information can be found [here](https://github.com/bitnami/charts/tree/main/bitnami/kafka#to-2400).
+
+#### Upgrading from Kraft mode
+
+If you are upgrading from Kraft mode, follow the instructions [here](https://github.com/bitnami/charts/tree/main/bitnami/kafka#upgrading-from-zookeeper-mode).
+
+#### Upgrading from Zookeeper mode
+
+If you are upgrading from Zookeeper mode, follow the instructions [here](https://github.com/bitnami/charts/tree/main/bitnami/kafka#upgrading-from-zookeeper-mode).
+
+After you complete the steps above, follow the instructions [here](https://github.com/bitnami/charts/tree/main/bitnami/kafka#migrating-from-zookeeper-early-access) to finally migrate from Zookeeper.
