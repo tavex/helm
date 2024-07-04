@@ -10,11 +10,17 @@ securityContext:
 hostAliases:
   {{- toYaml . | nindent 2 }}
 {{- end }}
+{{- if $.Values.shareProcessNamespace }}
+shareProcessNamespace: true
+{{- end }}
 containers:
   - name: {{ include "opentelemetry-collector.lowercase_chartname" . }}
+    {{- if .Values.command.name }}
     command:
       - /{{ .Values.command.name }}
-      {{- if .Values.configMap.create }}
+    {{- end }}
+    args:
+      {{- if or .Values.configMap.create .Values.configMap.existingName }}
       - --config=/conf/relay.yaml
       {{- end }}
       {{- range .Values.command.extraArgs }}
@@ -109,7 +115,7 @@ containers:
       {{- toYaml . | nindent 6 }}
     {{- end }}
     volumeMounts:
-      {{- if .Values.configMap.create }}
+      {{- if or .Values.configMap.create .Values.configMap.existingName }}
       - mountPath: /conf
         name: {{ include "opentelemetry-collector.lowercase_chartname" . }}-configmap
       {{- end }}
@@ -132,10 +138,10 @@ containers:
         mountPropagation: HostToContainer
       {{- end }}
       {{- if .Values.extraVolumeMounts }}
-      {{- toYaml .Values.extraVolumeMounts | nindent 6 }}
+      {{- tpl (toYaml .Values.extraVolumeMounts) . | nindent 6 }}
       {{- end }}
-{{- with .Values.extraContainers }}
-{{- toYaml . | nindent 2 }}
+{{- if .Values.extraContainers }}
+  {{- tpl (toYaml .Values.extraContainers) . | nindent 2 }}
 {{- end }}
 {{- if .Values.initContainers }}
 initContainers:
@@ -145,10 +151,10 @@ initContainers:
 priorityClassName: {{ .Values.priorityClassName | quote }}
 {{- end }}
 volumes:
-  {{- if .Values.configMap.create }}
+  {{- if or .Values.configMap.create .Values.configMap.existingName }}
   - name: {{ include "opentelemetry-collector.lowercase_chartname" . }}-configmap
     configMap:
-      name: {{ include "opentelemetry-collector.fullname" . }}{{ .configmapSuffix }}
+      name: {{ include "opentelemetry-collector.configName" . }}
       items:
         - key: relay
           path: relay.yaml
@@ -173,7 +179,7 @@ volumes:
       path: /
   {{- end }}
   {{- if .Values.extraVolumes }}
-  {{- toYaml .Values.extraVolumes | nindent 2 }}
+  {{- tpl (toYaml .Values.extraVolumes) . | nindent 2 }}
   {{- end }}
 {{- with .Values.nodeSelector }}
 nodeSelector:

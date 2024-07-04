@@ -131,7 +131,11 @@
         "create": {
           "description": "Specifies whether a configMap should be created (true by default).",
           "type": "boolean"
-        }
+        },
+        "existingName": {
+          "description": "Specifies an existing configMap to be mounted to the pod",
+          "type": "string"
+        }        
       }
     },
     "config": {
@@ -298,12 +302,6 @@
         "type": "object"
       }
     },
-    "extraObjects": {
-      "type": "array",
-      "items": {
-        "type": "object"
-      }
-    },
     "extraVolumes": {
       "type": "array",
       "items": {
@@ -360,6 +358,9 @@
             "cpu": {
               "type": ["string", "integer"]
             },
+            "ephemeral-storage": {
+              "type": "string"
+            },
             "memory": {
               "type": "string"
             }
@@ -371,6 +372,9 @@
           "properties": {
             "cpu": {
               "type": ["string", "integer"]
+            },
+            "ephemeral-storage": {
+              "type": "string"
             },
             "memory": {
               "type": "string"
@@ -886,39 +890,42 @@
       }
     },
     "networkPolicy": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "enabled": {
-          "type": "boolean"
-        },
-        "annotations": {
-          "type": "object"
-        },
-        "allowIngressFrom": {
-          "type": "array",
-          "description": "List of sources which should be able to access the collector. See the standard NetworkPolicy 'spec.ingress.from' definition for more information: https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/network-policy-v1/. If left empty, ingress traffic will be permitted on to all enabled ports from all sources.",
-          "items": {
-            "type": "object"
-          }
-        },
-        "extraIngressRules": {
-          "type": "array",
-          "description": "Additional ingress rules to apply to the policy. See the standard NetworkPolicy 'spec.ingress' definition for more information: https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/network-policy-v1/",
-          "items": {
-            "type": "object"
-          }
-        },
-        "egressRules": {
-          "description": "Optional egress configuration, see the standard NetworkPolicy 'spec.egress' definition for more information: https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/network-policy-v1/",
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "annotations": {
+              "type": "object"
+            },
+            "allowIngressFrom": {
+              "type": "array",
+              "description": "List of sources which should be able to access the collector. See the standard NetworkPolicy 'spec.ingress.from' definition for more information: https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/network-policy-v1/. If left empty, ingress traffic will be permitted on to all enabled ports from all sources.",
+              "items": {
+                "type": "object"
+              }
+            },
+            "extraIngressRules": {
+              "type": "array",
+              "description": "Additional ingress rules to apply to the policy. See the standard NetworkPolicy 'spec.ingress' definition for more information: https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/network-policy-v1/",
+              "items": {
+                "type": "object"
+              }
+            },
+            "egressRules": {
+              "description": "Optional egress configuration, see the standard NetworkPolicy 'spec.egress' definition for more information: https://kubernetes.io/docs/reference/kubernetes-api/policy-resources/network-policy-v1/",
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
         }
-      }
     },
     "useGOMEMLIMIT": {
+      "type": "boolean"
+    },
+    "shareProcessNamespace": {
       "type": "boolean"
     }
   },
