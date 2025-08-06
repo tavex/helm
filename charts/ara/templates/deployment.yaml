@@ -35,8 +35,10 @@ spec:
             value: {{ $v | default "None" | quote }}
           {{- end }}
         {{- end }}
+        {{- if $.Values.resources }}
         resources:
-          {{-  toYaml $.Values.resources | nindent 8 }}
+          {{-  toYaml $.Values.resources | nindent 10 }}
+        {{- end }}
         {{- if $.Values.envFromSecret }}
         envFrom:
         - secretRef:
